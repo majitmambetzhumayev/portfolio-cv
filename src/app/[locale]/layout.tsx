@@ -6,6 +6,7 @@ import { getMessages } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Script from 'next/script';
+import Header from '@/components/layout/Header';
 
 const fraunces = Fraunces({ 
   subsets: ['latin'],
@@ -50,7 +51,10 @@ export default async function LocaleLayout({
     <html lang={locale} className={`${inter.variable} ${fraunces.variable}`}>
       <body className="font-body antialiased">
         <NextIntlClientProvider messages={messages}>
-          {children}
+        <Header />
+          <div className="min-h-screen bg-forest-900" >
+            {children}
+          </div>
         </NextIntlClientProvider>
         
         {/* Umami Analytics - Production only */}

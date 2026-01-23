@@ -1,0 +1,109 @@
+{
+  "header": {
+    "cv": "Curriculum Vitae",
+    "projects": "Projets",
+    "contact": "Contactez-moi"
+  },
+  "cv": {
+    "header": {
+      "name": "Majit Morosetti",
+      "title": "Développeur Full-Stack (orienté frontend)",
+      "tagline": "Remote | France"
+    },
+    "nav": {
+      "about": "Profil",
+      "experience": "Expérience",
+      "skills": "Compétences",
+      "education": "Formation",
+      "additional": "Langues"
+    },
+    "about": {
+      "title": "Profil",
+      "p1": "Développeur web full-stack orienté frontend, spécialisé dans la conception et le développement d'applications web mises en production.",
+      "p2": "Habitué à travailler en autonomie sur des produits concrets, avec une approche orientée usage, fiabilité et livraison. Issu d'un parcours en ingénierie industrielle, apportant rigueur, structuration et discipline documentaire aux projets logiciels."
+    },
+    "experiences": {
+      "title": "Expériences professionnelles",
+      "saas": {
+        "period": "2023 — Aujourd'hui",
+        "role": "Fondateur / Développeur Full-Stack",
+        "company": "Plateforme SaaS de génération de leads",
+        "items": [
+          "Conception et développement d'une <highlight>plateforme SaaS</highlight> de génération et d'ingestion automatisée de leads",
+          "Frontend en <highlight>Next.js (App Router), React, TypeScript, Tailwind CSS</highlight>",
+          "Développement d'<highlight>APIs backend en Node.js</highlight>, authentification et intégrations tierces",
+          "Base de données <highlight>PostgreSQL</highlight>, schémas structurés et validations",
+          "Automatisation des emails transactionnels (Resend)",
+          "Mise en place des bases de facturation avec <highlight>Stripe</highlight>",
+          "Déploiement, exploitation et itérations en production",
+          "Focus : <highlight>autonomie, ownership produit, mise en production</highlight>"
+        ]
+      },
+      "piping": {
+        "period": "2016 — 2021",
+        "role": "Piping Designer",
+        "company": "Consulting en ingénierie industrielle · Capgemini · Bee Engineering · Abylsen",
+        "items": [
+          "Missions de conseil chez des clients industriels",
+          "Travail structuré par jalons, validations techniques et points de décision",
+          "Production de <highlight>documentation technique conforme</highlight> aux normes et standards",
+          "Collaboration avec des équipes pluridisciplinaires sous contraintes fortes de qualité",
+          "Développement de <highlight>scripts d'automatisation (Python, Bash, VBA)</highlight> pour optimiser des processus techniques répétitifs",
+          "<highlight>Compétences transférables</highlight> : rigueur, communication client, documentation, résolution structurée de problèmes"
+        ]
+      }
+    },
+    "skills": {
+      "title": "Compétences techniques",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Outils & écosystème",
+      "categories": {
+        "frontend": [
+          "React",
+          "Next.js (App Router)",
+          "TypeScript",
+          "Tailwind CSS",
+          "HTML / CSS"
+        ],
+        "backend": [
+          "Node.js",
+          "APIs REST",
+          "PostgreSQL",
+          "Authentification (JWT, sessions)",
+          "Webhooks & intégrations tierces"
+        ],
+        "tools": [
+          "Git / GitHub",
+          "Docker",
+          "Postman",
+          "Vercel",
+          "ESLint"
+        ]
+      }
+    },
+    "education": {
+      "title": "Formation",
+      "cpge": {
+        "period": "2014 — 2016",
+        "title": "CPGE PTSI – PT (Classes préparatoires aux grandes écoles)",
+        "description": "Formation intensive en mathématiques, physique et sciences de l'ingénieur"
+      }
+    },
+    "additional": {
+      "title": "Langues",
+      "items": [
+        "Français : langue maternelle",
+        "Anglais : niveau professionnel"
+      ]
+    },
+    "cta": {
+      "downloadCV": "Télécharger le CV complet"
+    },
+    "footer": {
+      "builtWith": "Développé avec",
+      "and": "et",
+      "deployedOn": "Déployé sur"
+    }
+  }
+}

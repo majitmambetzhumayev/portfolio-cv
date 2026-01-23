@@ -1,0 +1,109 @@
+{
+  "header": {
+    "cv": "Resume",
+    "projects": "Projects",
+    "contact": "Contact me"
+  },
+  "cv": {
+    "header": {
+      "name": "Majit Morosetti",
+      "title": "Full-Stack Software Engineer (Frontend-oriented)",
+      "tagline": "Remote | France"
+    },
+    "nav": {
+      "about": "Profile",
+      "experience": "Experience",
+      "skills": "Skills",
+      "education": "Education",
+      "additional": "Languages"
+    },
+    "about": {
+      "title": "Profile",
+      "p1": "Full-stack software engineer with a strong frontend focus, building production-ready web applications from scratch.",
+      "p2": "Experienced in autonomous development, product-oriented thinking, and shipping real systems used in production. Background in engineering and industrial consulting, bringing rigor, documentation discipline, and reliability to software projects."
+    },
+    "experiences": {
+      "title": "Professional Experience",
+      "saas": {
+        "period": "2023 — Present",
+        "role": "Founder / Full-Stack Engineer",
+        "company": "Lead Generation SaaS",
+        "items": [
+          "Designed and developed a full-stack <highlight>SaaS for automated lead capture</highlight> and processing",
+          "Frontend built with <highlight>Next.js (App Router), React, TypeScript, Tailwind CSS</highlight>",
+          "Backend <highlight>APIs developed with Node.js</highlight>, authentication, webhooks, and third-party integrations",
+          "Data persistence with <highlight>PostgreSQL</highlight>, structured schemas and validations",
+          "Email workflows and transactional messaging (Resend)",
+          "Payment and billing foundations with <highlight>Stripe</highlight>",
+          "Deployed and operated in production (CI/CD, monitoring, iterations)",
+          "Key focus: <highlight>autonomous development, product ownership, production delivery</highlight>"
+        ]
+      },
+      "piping": {
+        "period": "2016 — 2021",
+        "role": "Piping Designer",
+        "company": "Industrial Engineering Consulting · Capgemini · Bee Engineering · Abylsen",
+        "items": [
+          "Client-facing consulting role on industrial and engineering projects",
+          "Worked with structured milestones, validation steps, and decision points",
+          "Produced <highlight>technical documentation</highlight>, standards-compliant deliverables, and proofs of concept",
+          "Collaborated with cross-functional teams under strict quality and production constraints",
+          "Developed <highlight>automation scripts (Python, Bash, VBA)</highlight> to optimize repetitive technical workflows",
+          "<highlight>Transferable skills</highlight>: rigor, documentation, stakeholder communication, structured problem-solving"
+        ]
+      }
+    },
+    "skills": {
+      "title": "Technical Skills",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "tools": "Tooling & Ecosystem",
+      "categories": {
+        "frontend": [
+          "React",
+          "Next.js (App Router)",
+          "TypeScript",
+          "Tailwind CSS",
+          "HTML / CSS"
+        ],
+        "backend": [
+          "Node.js",
+          "REST APIs",
+          "PostgreSQL",
+          "Authentication (JWT, sessions)",
+          "Webhooks & third-party integrations"
+        ],
+        "tools": [
+          "Git / GitHub",
+          "Docker",
+          "Postman",
+          "Vercel",
+          "ESLint"
+        ]
+      }
+    },
+    "education": {
+      "title": "Education",
+      "cpge": {
+        "period": "2014 — 2016",
+        "title": "CPGE PTSI – PT (Classes Préparatoires aux Grandes Écoles)",
+        "description": "Intensive training in mathematics, physics, and engineering fundamentals"
+      }
+    },
+    "additional": {
+      "title": "Languages",
+      "items": [
+        "French: Native",
+        "English: Professional working proficiency"
+      ]
+    },
+    "cta": {
+      "downloadCV": "Download full CV"
+    },
+    "footer": {
+      "builtWith": "Built with",
+      "and": "and",
+      "deployedOn": "Deployed on"
+    }
+  }
+}
