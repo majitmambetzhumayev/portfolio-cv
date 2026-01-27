@@ -161,6 +161,17 @@
       "demo": "-"
     }
   },
+    "contact": {
+    "title": "Contact",
+    "subtitle": "Une question ? Un projet ? N'hésitez pas à me contacter.",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "send": "Envoyer",
+    "sending": "Envoi...",
+    "success": "Message envoyé avec succès !",
+    "error": "Erreur lors de l'envoi. Réessayez."
+  },
   "footer": {
       "builtWith": "Développé avec",
       "and": "et",

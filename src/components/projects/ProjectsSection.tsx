@@ -15,7 +15,7 @@ export default function ProjectsSection() {
   };
 
   return (
-    <section id="projects" className="max-w-7xl mx-auto px-6 pb-16 pt-8 lg:pt-24 md:px-12 lg:px-24">
+    <section id="projects" className="max-w-7xl mx-auto px-6 pb-16 pt-8 lg:py-24 md:px-12 lg:px-24">
       <h2 className="font-body text-4xl sm:text-5xl font-bold text-forest-900 mb-4 tracking-tight">
         {t('title')}
       </h2>
