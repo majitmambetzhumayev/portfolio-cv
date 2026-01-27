@@ -7,7 +7,7 @@
   "cv": {
     "header": {
       "name": "Majit Morosetti",
-      "title": "Full-Stack Software Engineer (Frontend-oriented)",
+      "title": "Full-Stack Web Developer (Front End oriented)",
       "tagline": "Remote | France"
     },
     "nav": {
@@ -74,6 +74,7 @@
           "Webhooks & third-party integrations"
         ],
         "tools": [
+          "Linux (WSL)",
           "Git / GitHub",
           "Docker",
           "Postman",
@@ -99,11 +100,70 @@
     },
     "cta": {
       "downloadCV": "Download full CV"
+    }
+  },
+  "projects": {
+    "title": "Projets en production",
+    "subtitle": "Web applications designed, built and deployed in real-world conditions",
+    "viewDemo": "View project",
+    "saas": {
+      "title": "Lead Generation SaaS Platform",
+      "description": "Full-stack application with multi-step questionnaire, automated lead processing via webhooks and management dashboard. Email notification system and Notion synchronization.",
+      "tech": [
+        "Next.js",
+        "TypeScript",
+        "PostgreSQL",
+        "Resend",
+        "Notion API"
+      ],
+      "highlights": [
+        "Production",
+        "JWT Auth",
+        "Automated workflows"
+      ],
+      "github": "-",
+      "demo": "https://sparqup.fr"
     },
-    "footer": {
+    "analytics": {
+      "title": "Analytics & Management Dashboard",
+      "description": "Internal dashboard with real-time data visualization, lead management, Umami Analytics integration, and report exports. Admin interface with access control.",
+      "tech": [
+        "Next.js",
+        "PostgreSQL",
+        "Recharts",
+        "Umami API",
+        "TailwindCSS"
+      ],
+      "highlights": [
+        "Real-time data",
+        "Umami integration",
+        "CSV export"
+      ],
+      "github": "-",
+      "demo": "-"
+    },
+    "api": {
+      "title": "Multi-source Lead Ingestion API",
+      "description": "Node.js REST API to centralize leads from external platforms (Malt, Codeur.com). Data normalization, webhook validation, rate limiting, and automated Notion synchronization.",
+      "tech": [
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "Notion API",
+        "Jest"
+      ],
+      "highlights": [
+        "Secure webhooks",
+        "Data normalization",
+        "Unit tests"
+      ],
+      "github": "-",
+      "demo": "-"
+    }
+  },
+  "footer": {
       "builtWith": "Built with",
       "and": "and",
       "deployedOn": "Deployed on"
     }
-  }
 }

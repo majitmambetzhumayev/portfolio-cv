@@ -7,7 +7,7 @@
   "cv": {
     "header": {
       "name": "Majit Morosetti",
-      "title": "Développeur Full-Stack (orienté frontend)",
+      "title": "Développeur Full-Stack (orienté Front End)",
       "tagline": "Remote | France"
     },
     "nav": {
@@ -74,6 +74,7 @@
           "Webhooks & intégrations tierces"
         ],
         "tools": [
+          "Linux (WSL)",
           "Git / GitHub",
           "Docker",
           "Postman",
@@ -99,11 +100,70 @@
     },
     "cta": {
       "downloadCV": "Télécharger le CV complet"
+    }
+  },
+  "projects": {
+    "title": "Production Projects",
+    "subtitle": "Applications web conçues, développées et déployées en conditions réelles",
+    "viewDemo": "Voir le projet",
+    "saas": {
+      "title": "Plateforme SaaS de génération de leads",
+      "description": "Application full-stack avec questionnaire multi-étapes, traitement de leads automatisé via webhooks et dashboard de gestion. Système de notifications par email et synchronisation Notion.",
+      "tech": [
+        "Next.js",
+        "TypeScript",
+        "PostgreSQL",
+        "Resend",
+        "Notion API"
+      ],
+      "highlights": [
+        "En production",
+        "Auth JWT",
+        "Workflows automatisés"
+      ],
+      "github": "-",
+      "demo": "https://sparqup.fr"
     },
-    "footer": {
+    "analytics": {
+      "title": "Dashboard Analytics & Gestion",
+      "description": "Dashboard interne avec visualisation de données en temps réel, gestion de leads, intégration Umami Analytics et export de rapports. Interface d'administration avec contrôle d'accès.",
+      "tech": [
+        "Next.js",
+        "PostgreSQL",
+        "Recharts",
+        "Umami API",
+        "TailwindCSS"
+      ],
+      "highlights": [
+        "Données temps réel",
+        "Intégration Umami",
+        "Export CSV"
+      ],
+      "github": "-",
+      "demo": "-"
+    },
+    "api": {
+      "title": "API d'ingestion de leads multi-sources",
+      "description": "API REST Node.js pour centraliser les leads de plateformes externes (Malt, Codeur.com). Normalisation des données, validation des webhooks, rate limiting et synchronisation automatique vers Notion.",
+      "tech": [
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "Notion API",
+        "Jest"
+      ],
+      "highlights": [
+        "Webhooks sécurisés",
+        "Normalisation data",
+        "Tests unitaires"
+      ],
+      "github": "-",
+      "demo": "-"
+    }
+  },
+  "footer": {
       "builtWith": "Développé avec",
       "and": "et",
       "deployedOn": "Déployé sur"
     }
-  }
 }

@@ -7,6 +7,7 @@ import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import Script from 'next/script';
 import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
 
 const fraunces = Fraunces({ 
   subsets: ['latin'],
@@ -55,6 +56,7 @@ export default async function LocaleLayout({
           <div className="min-h-screen bg-forest-900" >
             {children}
           </div>
+        <Footer /> 
         </NextIntlClientProvider>
         
         {/* Umami Analytics - Production only */}

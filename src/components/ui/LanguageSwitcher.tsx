@@ -10,14 +10,53 @@ export default function LanguageSwitcher() {
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
 
+   // ✅ Trouve l'ID le plus précis (sous-section prioritaire)
+  const getCurrentVisibleId = (): string => {
+    const scrollPosition = window.scrollY + 100; // Offset header
+    
+    // Récupère TOUS les éléments avec un ID dans le DOM
+    const elementsWithId = Array.from(document.querySelectorAll('[id]'));
+    
+    // Filtre ceux qui sont visibles à l'écran
+    const visibleElements = elementsWithId
+      .map(element => {
+        const rect = element.getBoundingClientRect();
+        const offsetTop = window.scrollY + rect.top;
+        
+        return {
+          id: element.id,
+          offsetTop,
+          offsetHeight: rect.height,
+          // Distance du haut de l'écran (plus c'est petit, plus c'est proche)
+          distanceFromTop: Math.abs(offsetTop - scrollPosition)
+        };
+      })
+      // Garde uniquement ceux visibles
+      .filter(el => {
+        return scrollPosition >= el.offsetTop && 
+               scrollPosition < el.offsetTop + el.offsetHeight;
+      })
+      // Trie par distance (le plus proche en premier)
+      .sort((a, b) => a.distanceFromTop - b.distanceFromTop);
+    
+    // Retourne l'ID le plus précis (= le plus proche du scroll)
+    return visibleElements[0]?.id || '';
+  };
+
+
   const switchLocale = (newLocale: 'fr' | 'en') => {
     startTransition(() => {
-      // Remplace /fr/cv par /en/cv
+      // ✅ Détecte automatiquement TOUS les éléments avec ID
+      const currentHash = getCurrentVisibleId();
+      
       const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
-      router.replace(newPathname);
+      const newUrl = currentHash ? `${newPathname}#${currentHash}` : newPathname;
+      
+      router.replace(newUrl);
     });
   };
 
+ 
   return (
     <div className="flex gap-2">
       <button

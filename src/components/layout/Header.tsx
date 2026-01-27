@@ -3,14 +3,11 @@
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
 import LanguageSwitcher from '../ui/LanguageSwitcher';
 
 export default function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const params = useParams();
-  const locale = params.locale as string;
   const t = useTranslations('header');
 
   useEffect(() => {
@@ -43,6 +40,7 @@ export default function Header() {
           {/* Logo */}
           <Link 
             href="/" 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="text-xl font-body font-semibold hover:text-forest-400 transition-colors "
           >
             majit.dev
@@ -53,6 +51,10 @@ export default function Header() {
             <li>
               <Link
                 href='#cv' 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('cv')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="text-sm font-medium hover:text-forest-400 transition-colors"
               >
                 {t('cv') || 'cv'}
@@ -61,6 +63,10 @@ export default function Header() {
             <li>
               <Link 
                 href="#projects" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="text-sm font-medium hover:text-forest-400 transition-colors"
               >
                 {t('projects') || 'Projects'}
@@ -69,6 +75,10 @@ export default function Header() {
             <li>
               <a 
                 href="#contact" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
                 className="text-sm font-medium hover:text-forest-400 transition-colors"
               >
                 {t('contact') || 'Contact'}

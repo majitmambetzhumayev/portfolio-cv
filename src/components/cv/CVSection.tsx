@@ -3,37 +3,64 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useTranslations, useLocale } from 'next-intl';
+import CVSectionTitle from './CVSectionTitle';
 
-export default function CVContent() {
+export default function CVSection() {
   const t = useTranslations('cv');
   const locale = useLocale();
   const [activeSection, setActiveSection] = useState('about');
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['about', 'experience', 'competences', 'formations', 'infos-comp'];
-      const scrollPosition = window.scrollY + 100;
+   useEffect(() => {
+    const sections = ['cv-about', 'cv-experience', 'cv-skills', 'cv-education', 'cv-languages'];
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Filtre les sections visibles
+        const visibleSections = entries
+          .filter(entry => entry.isIntersecting)
+          .map(entry => {
+            const rect = entry.boundingClientRect;
+            const viewportMiddle = window.innerHeight / 2;
+            
+            // ✅ Distance entre le TOP de la section et le milieu de l'écran
+            const distanceFromMiddle = Math.abs(rect.top - viewportMiddle);
+            
+            return {
+              id: entry.target.id,
+              distanceFromMiddle,
+              topPosition: rect.top
+            };
+          })
+          // Trie par proximité : le top le plus proche du milieu gagne
+          .sort((a, b) => a.distanceFromMiddle - b.distanceFromMiddle);
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
-          }
+        // Active la section dont le top est le plus proche du milieu
+        if (visibleSections.length > 0) {
+          setActiveSection(visibleSections[0].id);
         }
+      },
+      {
+        threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
+        // ✅ Zone de détection centrée sur le milieu de l'écran
+        rootMargin: '-50% 0px -50% 0px'
       }
-    };
+    );
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Observer toutes les sections
+    sections.forEach(sectionId => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
@@ -46,7 +73,7 @@ export default function CVContent() {
   };
 
   return (
-    <div className="lg:flex lg:justify-between lg:gap-4 max-w-7xl mx-auto px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-12">
+    <div className="lg:flex lg:justify-between lg:gap-4 max-w-7xl mx-auto px-6 py-24 md:px-12 md:py-20 lg:px-24 lg:pb-12 lg:py-0">
       
       {/* LEFT SIDE - Sticky Info */}
       <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:pb-40 lg:pt-24">
@@ -104,7 +131,28 @@ export default function CVContent() {
                 fill="currentColor"
                 className="h-6 w-6"
               >
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+                <defs>
+                  <mask id="cvMask">
+                    {/* Rectangle blanc = zone visible */}
+                    <rect width="24" height="24" fill="white" />
+                    {/* Texte noir = zone découpée */}
+                    <text
+                      x="12"
+                      y="18"
+                      textAnchor="middle"
+                      fontSize="10"
+                      fontWeight="bold"
+                      fill="black"
+                    >
+                      CV
+                    </text>
+                  </mask>
+                </defs>
+                
+                <path 
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" 
+                  mask="url(#cvMask)"
+                />
                 <path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3" />
               </svg>
             </a>
@@ -113,7 +161,11 @@ export default function CVContent() {
         <div>
           {/* Nom + Titre */}
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            <Link href={`/${locale}`} className="hover:text-forest-300 transition-colors">
+            <Link 
+              href={`#cv`} 
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+              className="hover:text-forest-300 transition-colors"
+              >
               {t('header.name')}
             </Link>
           </h1>
@@ -130,11 +182,11 @@ export default function CVContent() {
           <nav className="nav hidden lg:block mt-12" aria-label="In-page jump links">
             <ul className="w-max">
               {[
-                { id: 'about', label: t('nav.about') },
-                { id: 'experience', label: t('nav.experience') },
-                { id: 'competences', label: t('nav.skills') },
-                { id: 'formations', label: t('nav.education') },
-                { id: 'infos-comp', label: t('nav.additional') },
+                { id: 'cv-about', label: t('nav.about') },
+                { id: 'cv-experience', label: t('nav.experience') },
+                { id: 'cv-skills', label: t('nav.skills') },
+                { id: 'cv-education', label: t('nav.education') },
+                { id: 'cv-languages', label: t('nav.additional') },
               ].map(({ id, label }) => (
                 <li key={id}>
                   <button
@@ -170,16 +222,11 @@ export default function CVContent() {
       </header>
 
       {/* RIGHT SIDE - Scrollable Content */}
-      <main className="py-12 lg:w-1/2 lg:pt-40">
+      <main className="py-8 lg:py-12 lg:w-1/2 lg:pt-40">
         
         {/* Profil / About */}
-        <section id="about" className="mb-16 scroll-mt-16 lg:mb-24 lg:scroll-mt-24">
-          <div className="sticky top-0 z-20 -mx-6 w-screen bg-forest-900/75 px-6 py-5 backdrop-blur lg:hidden">
-            <h2 className="text-lg font-bold uppercase tracking-widest text-neutral-200">
-              {t('about.title')}
-            </h2>
-          </div>
-          
+        <section id="cv-about" className="mb-16 scroll-mt-16 lg:mb-16 lg:scroll-mt-24">
+          <CVSectionTitle title={t('about.title')} desktopHidden={true} />
           <div className="space-y-4 text-neutral-400 leading-relaxed">
             <p>{t('about.p1')}</p>
             <p>{t('about.p2')}</p>
@@ -187,17 +234,13 @@ export default function CVContent() {
         </section>
 
         {/* Expérience professionnelle */}
-        <section id="experience" className="mb-16 scroll-mt-16 lg:mb-24 lg:scroll-mt-24">
-          <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-forest-900/75 px-6 py-5 backdrop-blur">
-            <h2 className="text-lg lg:text-3xl font-bold tracking-widest text-neutral-200">
-              {t('experiences.title')}
-            </h2>
-          </div>
+        <section id="cv-experience" className="mb-16 scroll-mt-16 lg:mb-24 lg:scroll-mt-24">
+             <CVSectionTitle title= {t('experiences.title')} />
 
           <ol className="group/list">
             {/* Expérience SaaS */}
-            <li className="mb-12">
-              <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+            <li id="cv-experience-saas" className="mb-12 mt-6">
+              <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 opacity-80 lg:group-hover/list:opacity-100">
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/20"></div>
                 
                 <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-neutral-500 sm:col-span-2">
@@ -231,8 +274,8 @@ export default function CVContent() {
             </li>
 
             {/* Expérience Piping Designer */}
-            <li className="mb-12">
-              <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+            <li id="cv-experience-piping" className="mb-12 mt-6">
+              <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:opacity-100! lg:group-hover/list:opacity-50">
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/20"></div>
                 
                 <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-neutral-500 sm:col-span-2">
@@ -294,17 +337,13 @@ export default function CVContent() {
         </section>
 
         {/* Compétences techniques */}
-        <section id="competences" className="mb-16 scroll-mt-16 lg:mb-32 lg:scroll-mt-24">
-          <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-forest-900/75 px-6 py-5 backdrop-blur">
-            <h2 className="text-lg lg:text-3xl font-bold tracking-widest text-neutral-200">
-              {t('skills.title')}
-            </h2>
-          </div>
+        <section id="cv-skills" className="mb-16 scroll-mt-16 lg:mb-16 lg:scroll-mt-24">
+              <CVSectionTitle title={t('skills.title')} />
 
           <ol className="group/list">
             {/* Frontend */}
-            <li className="mb-12">
-              <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+            <li className="mb-12 mt-6">
+              <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:opacity-100! lg:group-hover/list:opacity-50">
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/20"></div>
                 
                 <header className="flex items-center z-10 mb-2 mt-1 text-md font-semibold uppercase tracking-wide text-neutral-500 sm:col-span-2">
@@ -329,7 +368,7 @@ export default function CVContent() {
 
             {/* Backend */}
             <li className="mb-12">
-              <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+              <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:opacity-100! lg:group-hover/list:opacity-50">
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/20"></div>
                 
                 <header className="flex items-center z-10 mb-2 mt-1 text-md font-semibold uppercase tracking-wide text-neutral-500 sm:col-span-2">
@@ -354,7 +393,7 @@ export default function CVContent() {
 
             {/* Outils & écosystème */}
             <li className="mb-12">
-              <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+              <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:opacity-100! lg:group-hover/list:opacity-50">
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/20"></div>
                 
                 <header className="flex items-center z-10 mb-2 mt-1 text-md font-semibold uppercase tracking-wide text-neutral-500 sm:col-span-2">
@@ -380,18 +419,15 @@ export default function CVContent() {
         </section>
 
         {/* Formation */}
-        <section id="formations" className="mb-16 scroll-mt-16 lg:mb-36 lg:scroll-mt-24">
-          <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-forest-900/75 px-6 py-5 backdrop-blur">
-            <h2 className="text-lg lg:text-3xl font-bold tracking-widest text-neutral-200">
-              {t('education.title')}
-            </h2>
-          </div>
+        <section id="cv-education" className="lg:pb-16 lg:scroll-mt-24">
+ 
+              <CVSectionTitle title={t('education.title')} />
+
 
           <ol className="group/list">
-            <li className="mb-12">
-              <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+            <li className="mb-12 mt-6">
+              <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:opacity-100! lg:group-hover/list:opacity-50">
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/20"></div>
-                
                 <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-neutral-500 sm:col-span-2">
                   {t('education.cpge.period')}
                 </header>
@@ -412,13 +448,8 @@ export default function CVContent() {
         </section>
 
         {/* Langues */}
-        <section id="infos-comp" className="mb-16 scroll-mt-16 lg:mb-32 lg:scroll-mt-24">
-          <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-forest-900/75 px-6 py-5 backdrop-blur">
-            <h2 className="text-lg lg:text-3xl font-bold tracking-widest text-neutral-200">
-              {t('additional.title')}
-            </h2>
-          </div>
-          
+        <section id="cv-languages" className="mb-16 scroll-mt-16 lg:mb-16 lg:scroll-mt-24 ">
+          <CVSectionTitle title={t('additional.title')} />
           <div className="text-neutral-300 text-base">
             {(t.raw('additional.items') as string[]).map((item, index) => (
               <div 
@@ -430,15 +461,6 @@ export default function CVContent() {
             ))}
           </div>
         </section>
-
-        {/* Footer */}
-        <footer className="max-w-md text-sm text-neutral-500 pt-20 lg:pt-40 pb-16">
-          <p>
-            {t('footer.builtWith')} <span className="text-neutral-400">Next.js</span> {t('footer.and')}{' '}
-            <span className="text-neutral-400">Tailwind CSS</span>. {t('footer.deployedOn')}{' '}
-            <span className="text-neutral-400">Vercel</span>.
-          </p>
-        </footer>
       </main>
     </div>
   );
