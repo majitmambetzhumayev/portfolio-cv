@@ -117,7 +117,7 @@ export default function CVSection() {
 
           <li className="text-xs">
             <a
-              href="/cv-majit-morosetti.pdf"
+              href={t('pdf-link')}
               target="_blank"
               rel="noopener noreferrer"
               className="block hover:text-white text-neutral-400 transition"
