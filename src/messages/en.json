@@ -19,14 +19,14 @@
     },
     "about": {
       "title": "Profile",
-      "p1": "Full-stack software engineer with a strong frontend focus, building production-ready web applications from scratch.",
+      "p1": "Full-stack software developer with a strong frontend focus, building production-ready web applications from scratch.",
       "p2": "Experienced in autonomous development, product-oriented thinking, and shipping real systems used in production. Background in engineering and industrial consulting, bringing rigor, documentation discipline, and reliability to software projects."
     },
     "experiences": {
       "title": "Professional Experience",
       "saas": {
         "period": "2023 — Present",
-        "role": "Founder / Full-Stack Engineer",
+        "role": "Founder / Full-Stack Developer",
         "company": "Lead Generation SaaS",
         "items": [
           "Designed and developed a full-stack <highlight>SaaS for automated lead capture</highlight> and processing",
