@@ -1,40 +1,40 @@
 // app/api/contact/route.ts
-import { Resend } from 'resend';
+import { getResend } from '@/lib/email';
 import { NextResponse } from 'next/server';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
     const { name, email, message } = await request.json();
 
-    // Validation basique
+    // Validation
     if (!name || !email || !message) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+      return NextResponse.json({ error: 'Tous les champs sont requis' }, { status: 400 });
     }
+    // lazy instantiation, otherwise nextjs fetches it when API key is not available
+    const resend = getResend();
 
-    // Envoi email
     const { data, error } = await resend.emails.send({
-      from: 'Contact Form <onboarding@resend.dev>', // Utilise ton domaine vérifié
-      to: 'ton-email@example.com',
+      from: process.env.RESEND_FROM_EMAIL!,
+      to: process.env.RESEND_TO_EMAIL!,
       replyTo: email,
-      subject: `Contact de ${name}`,
-      text: `
-Nom: ${name}
-Email: ${email}
-
-Message:
-${message}
+      subject: `💬 Contact Portfolio: ${name}`,
+      html: `
+        <h2>Nouveau message de contact</h2>
+        <p><strong>Nom:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message}</p>
       `,
     });
 
     if (error) {
+      console.error('Resend error:', error);
       return NextResponse.json({ error }, { status: 500 });
     }
 
     return NextResponse.json({ success: true, data });
   } catch (error) {
-    console.log(error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    console.error('Email send error:', error);
+    return NextResponse.json({ error: 'Erreur serveur' }, { status: 500 });
   }
 }

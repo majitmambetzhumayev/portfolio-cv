@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+      RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
+      RESEND_TO_EMAIL: ${{ secrets.RESEND_TO_EMAIL }}
     steps:
       - uses: actions/checkout@v4
 
