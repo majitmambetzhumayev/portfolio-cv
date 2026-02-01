@@ -35,8 +35,8 @@
           "Base de données <highlight>PostgreSQL</highlight>, schémas structurés et validations",
           "Automatisation des emails transactionnels (Resend)",
           "Déploiement, exploitation et itérations en production",
-          "Focus : <highlight>autonomie, ownership produit, mise en production</highlight>",
-          "Handled data persistence and application reliability in production environments"
+          "Handled data persistence and application reliability in production environments",
+          "Focus : <highlight>autonomie, ownership produit, mise en production</highlight>"
         ]
       },
       "piping": {
@@ -80,7 +80,7 @@
     },
     "additional": {
       "title": "Langues",
-      "items": ["Français : langue maternelle", "Anglais : niveau professionnel"]
+      "items": ["Français : langue maternelle", "Anglais : niveau bilingue", "Russe : A2"]
     },
     "cta": {
       "downloadCV": "Télécharger le CV complet"

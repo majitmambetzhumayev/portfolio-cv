@@ -35,8 +35,8 @@
           "Data persistence with <highlight>PostgreSQL</highlight>, structured schemas and validations",
           "Email workflows and transactional messaging (Resend)",
           "Deployed and operated in production (CI/CD, monitoring, iterations)",
-          "Key focus: <highlight>autonomous development, product ownership, production delivery</highlight>",
-          "Gestion de la persistance des données et de la fiabilité applicative en production"
+          "Gestion de la persistance des données et de la fiabilité applicative en production",
+          "Key focus: <highlight>autonomous development, product ownership, production delivery</highlight>"
         ]
       },
       "piping": {
@@ -80,7 +80,7 @@
     },
     "additional": {
       "title": "Languages",
-      "items": ["French: Native", "English: Professional working proficiency"]
+      "items": ["French: Native", "English: fluent / near native"]
     },
     "cta": {
       "downloadCV": "Download full CV"
