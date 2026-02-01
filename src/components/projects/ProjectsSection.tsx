@@ -5,13 +5,13 @@ import ProjectIcon from './ProjectIcon';
 export default function ProjectsSection() {
   const t = useTranslations('projects');
 
-  // Récupère les projets depuis les traductions
+  // fetches projects from messages
   const projectIds = ['saas', 'analytics', 'api'] as const;
 
   const projectImages: Record<(typeof projectIds)[number], string | undefined> = {
-    saas: '', // Laisse vide pour utiliser l'icône, ou mets "/projects/saas.png"
-    analytics: '', // "/projects/analytics.png"
-    api: '', // "/projects/api.png"
+    saas: '',
+    analytics: '',
+    api: '',
   };
 
   return (
@@ -30,7 +30,7 @@ export default function ProjectsSection() {
             highlights: t.raw(`${projectId}.highlights`) as string[],
             github: t(`${projectId}.github`),
             demo: t(`${projectId}.demo`),
-            image: projectImages[projectId] || undefined, // si pas d'iumage on pourra mettre un icone
+            image: projectImages[projectId] || undefined, // if no image -> icon
           };
 
           return (
@@ -38,19 +38,19 @@ export default function ProjectsSection() {
               key={projectId}
               className="group relative grid sm:grid-cols-8 gap-4 sm:gap-8 transition-all"
             >
-              {/* Background glow au hover */}
+              {/* Background glow on hover */}
               <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/10" />
 
-              {/* Icône/Image du projet */}
+              {/* Project icon/image*/}
               <div className="flex items-center justify-center z-10 sm:col-span-2">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-linear-to-br from-forest-900 to-forest-800 border border-forest-700 flex items-center justify-center group-hover:border-forest-500 group-hover:shadow-lg group-hover:shadow-forest-500/20 transition-all overflow-hidden">
                   <ProjectIcon projectId={projectId} image={project.image} />
                 </div>
               </div>
 
-              {/* Contenu */}
+              {/* Content */}
               <div className="z-10 sm:col-span-6 space-y-4">
-                {/* Titre */}
+                {/* Title */}
                 <h3 className="text-xl font-semibold text-forest-800 group-hover:text-forest-900 transition-colors">
                   {project.title}
                 </h3>

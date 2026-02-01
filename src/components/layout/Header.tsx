@@ -46,7 +46,7 @@ export default function Header() {
             majit.dev
           </Link>
 
-          {/* Navigation desktop */}
+          {/* Desktop Navigation */}
           <ul className="hidden md:flex gap-8 items-center">
             <li>
               <Link
@@ -86,7 +86,6 @@ export default function Header() {
             </li>
           </ul>
 
-          {/* Language switcher */}
           <LanguageSwitcher />
         </div>
       </nav>

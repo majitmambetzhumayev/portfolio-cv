@@ -14,14 +14,14 @@ export default function CVSection() {
 
     const observer = new IntersectionObserver(
       entries => {
-        // Filtre les sections visibles
+        // Filters visible sections
         const visibleSections = entries
           .filter(entry => entry.isIntersecting)
           .map(entry => {
             const rect = entry.boundingClientRect;
             const viewportMiddle = window.innerHeight / 2;
 
-            // ✅ Distance entre le TOP de la section et le milieu de l'écran
+            // Distance between top of section and the middle of the screen
             const distanceFromMiddle = Math.abs(rect.top - viewportMiddle);
 
             return {
@@ -30,22 +30,22 @@ export default function CVSection() {
               topPosition: rect.top,
             };
           })
-          // Trie par proximité : le top le plus proche du milieu gagne
+          // returns the section with the top closest to middle of screen
           .sort((a, b) => a.distanceFromMiddle - b.distanceFromMiddle);
 
-        // Active la section dont le top est le plus proche du milieu
+        // sets relevant section as active
         if (visibleSections.length > 0) {
           setActiveSection(visibleSections[0].id);
         }
       },
       {
         threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
-        // ✅ Zone de détection centrée sur le milieu de l'écran
+        // Detection zone centered on screen
         rootMargin: '-50% 0px -50% 0px',
       }
     );
 
-    // Observer toutes les sections
+    // Observs all sections
     sections.forEach(sectionId => {
       const element = document.getElementById(sectionId);
       if (element) {
@@ -63,7 +63,7 @@ export default function CVSection() {
     }
   };
 
-  // Helper pour remplacer les balises <highlight> par des spans
+  // Helper to replace highlight tags with spans
   const renderHighlightedText = (text: unknown) => {
     const textStr = typeof text === 'string' ? text : String(text || '');
     return textStr
@@ -131,9 +131,7 @@ export default function CVSection() {
               >
                 <defs>
                   <mask id="cvMask">
-                    {/* Rectangle blanc = zone visible */}
                     <rect width="24" height="24" fill="white" />
-                    {/* Texte noir = zone découpée */}
                     <text
                       x="12"
                       y="18"
@@ -157,7 +155,7 @@ export default function CVSection() {
           </li>
         </ul>
         <div>
-          {/* Nom + Titre */}
+          {/* Name and title*/}
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
             <Link
               href={`#cv`}
@@ -174,7 +172,7 @@ export default function CVSection() {
 
           <p className="mt-4 max-w-xs leading-normal text-neutral-400">{t('header.tagline')}</p>
 
-          {/* Navigation Desktop */}
+          {/* Desktop Navigation */}
           <nav className="nav hidden lg:block mt-12" aria-label="In-page jump links">
             <ul className="w-max">
               {[
@@ -226,12 +224,12 @@ export default function CVSection() {
           </div>
         </section>
 
-        {/* Expérience professionnelle */}
+        {/* experience */}
         <section id="cv-experience" className="mb-16 scroll-mt-16 lg:mb-24 lg:scroll-mt-24">
           <CVSectionTitle title={t('experiences.title')} />
 
           <ol className="group/list">
-            {/* Expérience SaaS */}
+            {/* SaaS */}
             <li id="cv-experience-saas" className="mb-12 mt-6">
               <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 opacity-80 lg:group-hover/list:opacity-100">
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/20"></div>
@@ -269,7 +267,7 @@ export default function CVSection() {
               </div>
             </li>
 
-            {/* Expérience Piping Designer */}
+            {/*  Piping Designer */}
             <li id="cv-experience-piping" className="mb-12 mt-6">
               <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:opacity-100! lg:group-hover/list:opacity-50">
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/20"></div>
@@ -335,12 +333,12 @@ export default function CVSection() {
           </div>
         </section>
 
-        {/* Compétences techniques */}
+        {/* skills */}
         <section id="cv-skills" className="mb-16 scroll-mt-16 lg:mb-16 lg:scroll-mt-24">
           <CVSectionTitle title={t('skills.title')} />
 
           <ol className="group/list">
-            {/* Frontend */}
+            {/* Front end */}
             <li className="mb-12 mt-6">
               <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:opacity-100! lg:group-hover/list:opacity-50">
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/20"></div>
@@ -365,7 +363,7 @@ export default function CVSection() {
               </div>
             </li>
 
-            {/* Backend */}
+            {/* Back end */}
             <li className="mb-12">
               <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:opacity-100! lg:group-hover/list:opacity-50">
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/20"></div>
@@ -390,7 +388,7 @@ export default function CVSection() {
               </div>
             </li>
 
-            {/* Outils & écosystème */}
+            {/* tooling & ecosystem */}
             <li className="mb-12">
               <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:opacity-100! lg:group-hover/list:opacity-50">
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/20"></div>
@@ -417,7 +415,7 @@ export default function CVSection() {
           </ol>
         </section>
 
-        {/* Formation */}
+        {/* Education */}
         <section id="cv-education" className="lg:pb-16 lg:scroll-mt-24">
           <CVSectionTitle title={t('education.title')} />
 
@@ -444,7 +442,7 @@ export default function CVSection() {
           </ol>
         </section>
 
-        {/* Langues */}
+        {/* Languages */}
         <section id="cv-languages" className="mb-16 scroll-mt-16 lg:mb-16 lg:scroll-mt-24 ">
           <CVSectionTitle title={t('additional.title')} />
           <div className="text-neutral-300 text-base">

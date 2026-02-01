@@ -5,7 +5,7 @@ import { useTransition } from 'react';
 
 export default function LanguageSwitcher() {
   const params = useParams();
-  const locale = params.locale as string; // ← Utilise params au lieu de useLocale()
+  const locale = params.locale as string;
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();

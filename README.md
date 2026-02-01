@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio & CV
 
-## Getting Started
+Personal portfolio website built with Next.js 16, featuring bilingual support (French/English) and a contact form.
 
-First, run the development server:
+**Live:** [majit.dev](https://majit.dev)
+
+---
+
+## Tech Stack
+
+- **Next.js 16** (App Router)
+- **React 19** + TypeScript
+- **Tailwind CSS** for styling
+- **next-intl v4** for i18n
+- **Resend** for email handling
+- **Umami** for privacy-focused analytics
+
+---
+
+## Features
+
+- 🌍 Bilingual (FR/EN) with automatic locale detection
+- 📱 Fully responsive design
+- 📧 Working contact form with email notifications
+- 🎨 Custom fonts (Fraunces + Inter)
+- 🔍 SEO optimized with OpenGraph metadata
+- 📊 Privacy-focused analytics (production only)
+
+---
+
+## Quick Start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# Clone
+git clone https://github.com/majitmambetzhumayev/portfolio-cv.git
+cd portfolio-cv
+
+# Install
+pnpm install
+
+# Setup environment
+cp .env.example .env.local
+# Fill in your API keys
+
+# Run
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000/fr` or `/en`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Variables
 
-## Learn More
+```env
+RESEND_API_KEY=your_resend_key
+RESEND_FROM_EMAIL=contact@majit.dev
+RESEND_TO_EMAIL=your-email@example.com
+NEXT_PUBLIC_UMAMI_WEBSITE_ID=your_umami_id
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+src/
+├── app/
+│   ├── [locale]/           # Locale-based routing
+│   └── api/contact/        # Contact form endpoint
+├── components/
+│   ├── cv/                 # CV section
+│   ├── projects/           # Projects showcase
+│   └── contact/            # Contact form
+├── i18n/
+│   ├── routing.ts          # Locale configuration
+│   └── request.ts          # Server config
+├── messages/               # Translations (fr.json, en.json)
+└── proxy.ts                # i18n middleware (Next.js 16)
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deployed on Vercel with automatic deployments from `main` branch.
+
+Custom domain configured via Squarespace DNS → Vercel.
+
+---
+
+## Contact
+
+**Majit Mambetzhumayev**  
+Full-Stack Developer
+
+- 🌐 [majit.dev](https://majit.dev)
+- 📧 contact@majit.dev
+- 💼 [GitHub](https://github.com/majitmambetzhumayev)

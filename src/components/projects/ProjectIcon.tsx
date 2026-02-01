@@ -10,7 +10,7 @@ interface ProjectIconProps {
 }
 
 export default function ProjectIcon({ projectId, image }: ProjectIconProps) {
-  // Map des icônes par défaut
+  // Maps default icons
   const defaultIcons = {
     saas: Rocket,
     analytics: BarChart3,
@@ -22,12 +22,12 @@ export default function ProjectIcon({ projectId, image }: ProjectIconProps) {
   return (
     <>
       {image ? (
-        // Si image fournie, l'afficher
+        // displays image if there is one
         <div className="relative w-full h-full rounded-lg overflow-hidden">
           <Image src={image} alt={`${projectId} preview`} fill className="object-cover" />
         </div>
       ) : (
-        // Sinon, icône Lucide
+        // if no image -> lucide icon
         <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-forest-400 group-hover:text-forest-300 transition-colors" />
       )}
     </>
