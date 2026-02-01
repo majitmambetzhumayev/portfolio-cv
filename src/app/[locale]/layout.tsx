@@ -1,13 +1,17 @@
-import type { Metadata } from 'next';
+// app/[locale]/layout.tsx
 import '../globals.css';
 import { Inter, Fraunces } from 'next/font/google';
-import { NextIntlClientProvider } from 'next-intl';
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import type { Metadata } from 'next';
+
+const locales = ['fr', 'en'] as const;
+export type Locale = (typeof locales)[number];
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -23,13 +27,76 @@ const inter = Inter({
 });
 
 export function generateStaticParams() {
-  return routing.locales.map(locale => ({ locale }));
+  return locales.map(locale => ({ locale }));
 }
 
-export const metadata: Metadata = {
-  title: 'Majit Mambetzhumayev - CV & Portfolio',
-  description: 'Full Stack Web Developper - Next.js - Node.js - React - Express - Tailwind CSS - ',
-};
+// Dynamic metadata
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+
+  const titles = {
+    fr: 'Majit Mambetzhumayev - Développeur Full-Stack',
+    en: 'Majit Mambetzhumayev - Full-Stack Developer',
+  };
+
+  const descriptions = {
+    fr: 'Portfolio et CV - Next.js, React, Node.js, TypeScript - Développement web moderne et automatisation',
+    en: 'Portfolio and CV - Next.js, React, Node.js, TypeScript - Modern web development and automation',
+  };
+
+  return {
+    title: {
+      default: titles[locale as Locale],
+      template: `%s | ${titles[locale as Locale]}`,
+    },
+    description: descriptions[locale as Locale],
+    metadataBase: new URL('https://majit.dev'),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        fr: '/fr',
+        en: '/en',
+      },
+    },
+    openGraph: {
+      title: titles[locale as Locale],
+      description: descriptions[locale as Locale],
+      url: `https://majit.dev/${locale}`,
+      siteName: 'Majit Mambetzhumayev',
+      locale: locale === 'fr' ? 'fr_FR' : 'en_US',
+      type: 'website',
+      images: [
+        {
+          url: '/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: titles[locale as Locale],
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: titles[locale as Locale],
+      description: descriptions[locale as Locale],
+      images: ['/og-image.png'],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,
@@ -38,15 +105,13 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
-  // ✅ Await params avant de l'utiliser
   const { locale } = await params;
 
-  // Valide que la locale est supportée
-  if (!routing.locales.includes(locale as 'fr' | 'en')) {
+  if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
 
-  const messages = await getMessages();
+  const messages = await getMessages({ locale });
 
   return (
     <html lang={locale} className={`${inter.variable} ${fraunces.variable}`}>

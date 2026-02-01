@@ -1,56 +1,20 @@
 'use client';
 
-import { useLocale } from 'next-intl';
-import { usePathname, useRouter } from 'next/navigation';
+import { useParams, usePathname, useRouter } from 'next/navigation';
 import { useTransition } from 'react';
 
 export default function LanguageSwitcher() {
-  const locale = useLocale();
+  const params = useParams();
+  const locale = params.locale as string; // ← Utilise params au lieu de useLocale()
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
 
-  // ✅ Trouve l'ID le plus précis (sous-section prioritaire)
-  const getCurrentVisibleId = (): string => {
-    const scrollPosition = window.scrollY + 100; // Offset header
-
-    // Récupère TOUS les éléments avec un ID dans le DOM
-    const elementsWithId = Array.from(document.querySelectorAll('[id]'));
-
-    // Filtre ceux qui sont visibles à l'écran
-    const visibleElements = elementsWithId
-      .map(element => {
-        const rect = element.getBoundingClientRect();
-        const offsetTop = window.scrollY + rect.top;
-
-        return {
-          id: element.id,
-          offsetTop,
-          offsetHeight: rect.height,
-          // Distance du haut de l'écran (plus c'est petit, plus c'est proche)
-          distanceFromTop: Math.abs(offsetTop - scrollPosition),
-        };
-      })
-      // Garde uniquement ceux visibles
-      .filter(el => {
-        return scrollPosition >= el.offsetTop && scrollPosition < el.offsetTop + el.offsetHeight;
-      })
-      // Trie par distance (le plus proche en premier)
-      .sort((a, b) => a.distanceFromTop - b.distanceFromTop);
-
-    // Retourne l'ID le plus précis (= le plus proche du scroll)
-    return visibleElements[0]?.id || '';
-  };
-
   const switchLocale = (newLocale: 'fr' | 'en') => {
     startTransition(() => {
-      // ✅ Détecte automatiquement TOUS les éléments avec ID
-      const currentHash = getCurrentVisibleId();
-
-      const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
-      const newUrl = currentHash ? `${newPathname}#${currentHash}` : newPathname;
-
-      router.replace(newUrl);
+      const segments = pathname.split('/');
+      segments[1] = newLocale;
+      router.replace(segments.join('/'));
     });
   };
 

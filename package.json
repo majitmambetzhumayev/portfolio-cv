@@ -14,8 +14,8 @@
   "dependencies": {
     "lucide-react": "^0.563.0",
     "mailsplit": "^5.4.6",
-    "next": "16.1.4",
-    "next-intl": "^4.7.0",
+    "next": "16.1.6",
+    "next-intl": "^4.8.1",
     "pnpm": "^10.28.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
