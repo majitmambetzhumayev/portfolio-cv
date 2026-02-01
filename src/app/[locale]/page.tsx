@@ -6,14 +6,15 @@ import ProjectsSection from '@/components/projects/ProjectsSection';
 export default function CVPage() {
   return (
     <>
-    <section id="cv">
-      <CVSection />
-    </section>
-    <section id="projects" className='bg-neutral-100'>
-      <ProjectsSection />
-    </section>
-    <section id="contact">
-      <ContactSection />
-    </section>
-    </>);
+      <section id="cv">
+        <CVSection />
+      </section>
+      <section id="projects" className="bg-neutral-100">
+        <ProjectsSection />
+      </section>
+      <section id="contact">
+        <ContactSection />
+      </section>
+    </>
+  );
 }

@@ -9,21 +9,21 @@ import Script from 'next/script';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
-const fraunces = Fraunces({ 
+const fraunces = Fraunces({
   subsets: ['latin'],
   variable: '--font-heading',
-  weight: ['300','400','500', '600', '700', '800'],
-  display: 'swap'
+  weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
 });
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-body',
-  display: 'swap'
+  display: 'swap',
 });
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
+  return routing.locales.map(locale => ({ locale }));
 }
 
 export const metadata: Metadata = {
@@ -52,13 +52,11 @@ export default async function LocaleLayout({
     <html lang={locale} className={`${inter.variable} ${fraunces.variable}`}>
       <body className="font-body antialiased">
         <NextIntlClientProvider messages={messages}>
-        <Header />
-          <div className="min-h-screen bg-forest-900" >
-            {children}
-          </div>
-        <Footer /> 
+          <Header />
+          <div className="min-h-screen bg-forest-900">{children}</div>
+          <Footer />
         </NextIntlClientProvider>
-        
+
         {/* Umami Analytics - Production only */}
         {process.env.NODE_ENV === 'production' && (
           <Script

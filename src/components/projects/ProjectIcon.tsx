@@ -14,7 +14,7 @@ export default function ProjectIcon({ projectId, image }: ProjectIconProps) {
   const defaultIcons = {
     saas: Rocket,
     analytics: BarChart3,
-    api: Server
+    api: Server,
   };
 
   const Icon = defaultIcons[projectId];
@@ -24,12 +24,7 @@ export default function ProjectIcon({ projectId, image }: ProjectIconProps) {
       {image ? (
         // Si image fournie, l'afficher
         <div className="relative w-full h-full rounded-lg overflow-hidden">
-          <Image
-            src={image}
-            alt={`${projectId} preview`}
-            fill
-            className="object-cover"
-          />
+          <Image src={image} alt={`${projectId} preview`} fill className="object-cover" />
         </div>
       ) : (
         // Sinon, icône Lucide

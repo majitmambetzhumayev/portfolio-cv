@@ -8,6 +8,6 @@ export default function getScreenshotUrl(url: string) {
     waitFor: '2000',
     viewport: '1200x800',
   });
-  
+
   return `${microlinkApi}?${params.toString()}`;
 }

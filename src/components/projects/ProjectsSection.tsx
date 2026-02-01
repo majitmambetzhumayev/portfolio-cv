@@ -8,10 +8,10 @@ export default function ProjectsSection() {
   // Récupère les projets depuis les traductions
   const projectIds = ['saas', 'analytics', 'api'] as const;
 
-  const projectImages: Record<typeof projectIds[number], string | undefined> = {
+  const projectImages: Record<(typeof projectIds)[number], string | undefined> = {
     saas: '', // Laisse vide pour utiliser l'icône, ou mets "/projects/saas.png"
     analytics: '', // "/projects/analytics.png"
-    api: '' // "/projects/api.png"
+    api: '', // "/projects/api.png"
   };
 
   return (
@@ -19,12 +19,10 @@ export default function ProjectsSection() {
       <h2 className="font-body text-4xl sm:text-5xl font-bold text-forest-900 mb-4 tracking-tight">
         {t('title')}
       </h2>
-      <p className="text-neutral-400 mb-12 max-w-2xl">
-        {t('subtitle')}
-      </p>
+      <p className="text-neutral-400 mb-12 max-w-2xl">{t('subtitle')}</p>
 
       <div className="space-y-12">
-        {projectIds.map((projectId) => {
+        {projectIds.map(projectId => {
           const project = {
             title: t(`${projectId}.title`),
             description: t(`${projectId}.description`),
@@ -43,7 +41,7 @@ export default function ProjectsSection() {
               {/* Background glow au hover */}
               <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/10" />
 
-             {/* Icône/Image du projet */}
+              {/* Icône/Image du projet */}
               <div className="flex items-center justify-center z-10 sm:col-span-2">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-linear-to-br from-forest-900 to-forest-800 border border-forest-700 flex items-center justify-center group-hover:border-forest-500 group-hover:shadow-lg group-hover:shadow-forest-500/20 transition-all overflow-hidden">
                   <ProjectIcon projectId={projectId} image={project.image} />
@@ -58,16 +56,18 @@ export default function ProjectsSection() {
                 </h3>
 
                 {/* Description */}
-                <p className="text-sm leading-relaxed text-neutral-700">
-                  {project.description}
-                </p>
+                <p className="text-sm leading-relaxed text-neutral-700">{project.description}</p>
 
                 {/* Highlights */}
                 {project.highlights && project.highlights.length > 0 && (
                   <ul className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-neutral-500">
                     {project.highlights.map((highlight, i) => (
                       <li key={i} className="flex items-center gap-1">
-                        <svg className="h-3 w-3 text-forest-500" fill="currentColor" viewBox="0 0 8 8">
+                        <svg
+                          className="h-3 w-3 text-forest-500"
+                          fill="currentColor"
+                          viewBox="0 0 8 8"
+                        >
                           <circle cx="4" cy="4" r="3" />
                         </svg>
                         {highlight}
@@ -78,7 +78,7 @@ export default function ProjectsSection() {
 
                 {/* Tech stack */}
                 <ul className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
+                  {project.tech.map(tech => (
                     <li key={tech}>
                       <span className="px-3 py-1 bg-neutral-700 border  rounded-full text-xs font-medium text-n-100 hover:bg-forest-700 transition-colors">
                         {tech}
@@ -110,8 +110,18 @@ export default function ProjectsSection() {
                       className="inline-flex items-center gap-1 text-forest-400 hover:text-forest-300 transition-colors"
                     >
                       {t('viewDemo')}
-                      <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      <svg
+                        className="h-4 w-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
                       </svg>
                     </a>
                   )}

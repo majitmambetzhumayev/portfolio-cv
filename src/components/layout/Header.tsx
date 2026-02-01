@@ -13,13 +13,13 @@ export default function Header() {
   useEffect(() => {
     const controlHeader = () => {
       const currentScrollY = window.scrollY;
-      
+
       if (currentScrollY < lastScrollY || currentScrollY < 100) {
         setIsVisible(true);
       } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setIsVisible(false);
       }
-      
+
       setLastScrollY(currentScrollY);
     };
 
@@ -38,8 +38,8 @@ export default function Header() {
       <nav className="glass-header">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Logo */}
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="text-xl font-body font-semibold hover:text-forest-400 transition-colors "
           >
@@ -50,8 +50,8 @@ export default function Header() {
           <ul className="hidden md:flex gap-8 items-center">
             <li>
               <Link
-                href='#cv' 
-                onClick={(e) => {
+                href="#cv"
+                onClick={e => {
                   e.preventDefault();
                   document.getElementById('cv')?.scrollIntoView({ behavior: 'smooth' });
                 }}
@@ -61,9 +61,9 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <Link 
-                href="#projects" 
-                onClick={(e) => {
+              <Link
+                href="#projects"
+                onClick={e => {
                   e.preventDefault();
                   document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
                 }}
@@ -73,9 +73,9 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <a 
-                href="#contact" 
-                onClick={(e) => {
+              <a
+                href="#contact"
+                onClick={e => {
                   e.preventDefault();
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                 }}

@@ -59,13 +59,7 @@
       "backend": "Backend",
       "tools": "Outils & écosystème",
       "categories": {
-        "frontend": [
-          "React",
-          "Next.js (App Router)",
-          "TypeScript",
-          "Tailwind CSS",
-          "HTML / CSS"
-        ],
+        "frontend": ["React", "Next.js (App Router)", "TypeScript", "Tailwind CSS", "HTML / CSS"],
         "backend": [
           "Node.js",
           "APIs REST",
@@ -73,14 +67,7 @@
           "Authentification (JWT, sessions)",
           "Webhooks & intégrations tierces"
         ],
-        "tools": [
-          "Linux (WSL)",
-          "Git / GitHub",
-          "Docker",
-          "Postman",
-          "Vercel",
-          "ESLint"
-        ]
+        "tools": ["Linux (WSL)", "Git / GitHub", "Docker", "Postman", "Vercel", "ESLint"]
       }
     },
     "education": {
@@ -93,10 +80,7 @@
     },
     "additional": {
       "title": "Langues",
-      "items": [
-        "Français : langue maternelle",
-        "Anglais : niveau professionnel"
-      ]
+      "items": ["Français : langue maternelle", "Anglais : niveau professionnel"]
     },
     "cta": {
       "downloadCV": "Télécharger le CV complet"
@@ -109,59 +93,29 @@
     "saas": {
       "title": "Plateforme SaaS de génération de leads",
       "description": "Application full-stack avec questionnaire multi-étapes, traitement de leads automatisé via webhooks et dashboard de gestion. Système de notifications par email et synchronisation Notion.",
-      "tech": [
-        "Next.js",
-        "TypeScript",
-        "PostgreSQL",
-        "Resend",
-        "Notion API"
-      ],
-      "highlights": [
-        "En production",
-        "Auth JWT",
-        "Workflows automatisés"
-      ],
+      "tech": ["Next.js", "TypeScript", "PostgreSQL", "Resend", "Notion API"],
+      "highlights": ["En production", "Auth JWT", "Workflows automatisés"],
       "github": "-",
       "demo": "https://sparqup.fr"
     },
     "analytics": {
       "title": "Dashboard Analytics & Gestion",
       "description": "Dashboard interne avec visualisation de données en temps réel, gestion de leads, intégration Umami Analytics et export de rapports. Interface d'administration avec contrôle d'accès.",
-      "tech": [
-        "Next.js",
-        "PostgreSQL",
-        "Recharts",
-        "Umami API",
-        "TailwindCSS"
-      ],
-      "highlights": [
-        "Données temps réel",
-        "Intégration Umami",
-        "Export CSV"
-      ],
+      "tech": ["Next.js", "PostgreSQL", "Recharts", "Umami API", "TailwindCSS"],
+      "highlights": ["Données temps réel", "Intégration Umami", "Export CSV"],
       "github": "-",
       "demo": "-"
     },
     "api": {
       "title": "API d'ingestion de leads multi-sources",
       "description": "API REST Node.js pour centraliser les leads de plateformes externes (Malt, Codeur.com). Normalisation des données, validation des webhooks, rate limiting et synchronisation automatique vers Notion.",
-      "tech": [
-        "Node.js",
-        "Express",
-        "PostgreSQL",
-        "Notion API",
-        "Jest"
-      ],
-      "highlights": [
-        "Webhooks sécurisés",
-        "Normalisation data",
-        "Tests unitaires"
-      ],
+      "tech": ["Node.js", "Express", "PostgreSQL", "Notion API", "Jest"],
+      "highlights": ["Webhooks sécurisés", "Normalisation data", "Tests unitaires"],
       "github": "-",
       "demo": "-"
     }
   },
-    "contact": {
+  "contact": {
     "title": "Contact",
     "subtitle": "Une question ? Un projet ? N'hésitez pas à me contacter.",
     "name": "Nom",
@@ -173,8 +127,8 @@
     "error": "Erreur lors de l'envoi. Réessayez."
   },
   "footer": {
-      "builtWith": "Développé avec",
-      "and": "et",
-      "deployedOn": "Déployé sur"
-    }
+    "builtWith": "Développé avec",
+    "and": "et",
+    "deployedOn": "Déployé sur"
+  }
 }

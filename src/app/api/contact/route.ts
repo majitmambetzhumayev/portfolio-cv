@@ -10,10 +10,7 @@ export async function POST(request: Request) {
 
     // Validation basique
     if (!name || !email || !message) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
     // Envoi email
@@ -37,10 +34,7 @@ ${message}
 
     return NextResponse.json({ success: true, data });
   } catch (error) {
-    console.log(error)
-    return NextResponse.json(
-      { error: 'Internal server error',},
-      { status: 500 }
-    );
+    console.log(error);
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

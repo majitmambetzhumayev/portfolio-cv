@@ -43,7 +43,7 @@ export default function ContactSection() {
             type="text"
             required
             value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            onChange={e => setFormData({ ...formData, name: e.target.value })}
             className="w-full px-4 py-3 bg-neutral-900 border border-neutral-700 rounded-lg focus:border-forest-500 focus:outline-none"
           />
         </div>
@@ -54,7 +54,7 @@ export default function ContactSection() {
             type="email"
             required
             value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            onChange={e => setFormData({ ...formData, email: e.target.value })}
             className="w-full px-4 py-3 bg-neutral-900 border border-neutral-700 rounded-lg focus:border-forest-500 focus:outline-none"
           />
         </div>
@@ -65,7 +65,7 @@ export default function ContactSection() {
             required
             rows={6}
             value={formData.message}
-            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            onChange={e => setFormData({ ...formData, message: e.target.value })}
             className="w-full px-4 py-3 bg-neutral-900 border border-neutral-700 rounded-lg focus:border-forest-500 focus:outline-none resize-none"
           />
         </div>
@@ -78,12 +78,8 @@ export default function ContactSection() {
           {status === 'loading' ? t('sending') : t('send')}
         </button>
 
-        {status === 'success' && (
-          <p className="text-forest-400 text-center">{t('success')}</p>
-        )}
-        {status === 'error' && (
-          <p className="text-red-400 text-center">{t('error')}</p>
-        )}
+        {status === 'success' && <p className="text-forest-400 text-center">{t('success')}</p>}
+        {status === 'error' && <p className="text-red-400 text-center">{t('error')}</p>}
       </form>
     </section>
   );

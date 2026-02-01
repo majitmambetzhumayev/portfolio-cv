@@ -9,25 +9,25 @@ export default function CVSection() {
   const t = useTranslations('cv');
   const [activeSection, setActiveSection] = useState('about');
 
-   useEffect(() => {
+  useEffect(() => {
     const sections = ['cv-about', 'cv-experience', 'cv-skills', 'cv-education', 'cv-languages'];
-    
+
     const observer = new IntersectionObserver(
-      (entries) => {
+      entries => {
         // Filtre les sections visibles
         const visibleSections = entries
           .filter(entry => entry.isIntersecting)
           .map(entry => {
             const rect = entry.boundingClientRect;
             const viewportMiddle = window.innerHeight / 2;
-            
+
             // ✅ Distance entre le TOP de la section et le milieu de l'écran
             const distanceFromMiddle = Math.abs(rect.top - viewportMiddle);
-            
+
             return {
               id: entry.target.id,
               distanceFromMiddle,
-              topPosition: rect.top
+              topPosition: rect.top,
             };
           })
           // Trie par proximité : le top le plus proche du milieu gagne
@@ -41,7 +41,7 @@ export default function CVSection() {
       {
         threshold: [0, 0.1, 0.25, 0.5, 0.75, 1],
         // ✅ Zone de détection centrée sur le milieu de l'écran
-        rootMargin: '-50% 0px -50% 0px'
+        rootMargin: '-50% 0px -50% 0px',
       }
     );
 
@@ -73,13 +73,12 @@ export default function CVSection() {
 
   return (
     <div className="lg:flex lg:justify-between lg:gap-4 max-w-7xl mx-auto px-6 py-24 md:px-12 md:py-20 lg:px-24 lg:pb-12 lg:py-0">
-      
       {/* LEFT SIDE - Sticky Info */}
       <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:pb-40 lg:pt-24">
         {/* Social Links */}
         <ul className="ml-1 mt-8 mb-4 flex items-center gap-5" aria-label="Social media">
           <li className="text-xs">
-            <a 
+            <a
               href="https://github.com/majitmambetzhumayev"
               target="_blank"
               rel="noopener noreferrer"
@@ -96,9 +95,9 @@ export default function CVSection() {
               </svg>
             </a>
           </li>
-          
+
           <li className="text-xs">
-            <a 
+            <a
               href="https://linkedin.com/in/majit-mambetzhumayev-95b4273a7"
               target="_blank"
               rel="noopener noreferrer"
@@ -117,7 +116,7 @@ export default function CVSection() {
           </li>
 
           <li className="text-xs">
-            <a 
+            <a
               href="/cv-majit-morosetti.pdf"
               target="_blank"
               rel="noopener noreferrer"
@@ -147,9 +146,9 @@ export default function CVSection() {
                     </text>
                   </mask>
                 </defs>
-                
-                <path 
-                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" 
+
+                <path
+                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"
                   mask="url(#cvMask)"
                 />
                 <path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3" />
@@ -160,22 +159,20 @@ export default function CVSection() {
         <div>
           {/* Nom + Titre */}
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            <Link 
-              href={`#cv`} 
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+            <Link
+              href={`#cv`}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="hover:text-forest-300 transition-colors"
-              >
+            >
               {t('header.name')}
             </Link>
           </h1>
-          
+
           <h2 className="mt-3 text-lg font-medium tracking-tight text-forest-400 sm:text-2xl">
             {t('header.title')}
           </h2>
-          
-          <p className="mt-4 max-w-xs leading-normal text-neutral-400">
-            {t('header.tagline')}
-          </p>
+
+          <p className="mt-4 max-w-xs leading-normal text-neutral-400">{t('header.tagline')}</p>
 
           {/* Navigation Desktop */}
           <nav className="nav hidden lg:block mt-12" aria-label="In-page jump links">
@@ -216,13 +213,10 @@ export default function CVSection() {
             </ul>
           </nav>
         </div>
-
-        
       </header>
 
       {/* RIGHT SIDE - Scrollable Content */}
       <main className="py-8 lg:py-12 lg:w-1/2 lg:pt-40">
-        
         {/* Profil / About */}
         <section id="cv-about" className="mb-16 scroll-mt-16 lg:mb-16 lg:scroll-mt-24">
           <CVSectionTitle title={t('about.title')} desktopHidden={true} />
@@ -234,14 +228,14 @@ export default function CVSection() {
 
         {/* Expérience professionnelle */}
         <section id="cv-experience" className="mb-16 scroll-mt-16 lg:mb-24 lg:scroll-mt-24">
-             <CVSectionTitle title= {t('experiences.title')} />
+          <CVSectionTitle title={t('experiences.title')} />
 
           <ol className="group/list">
             {/* Expérience SaaS */}
             <li id="cv-experience-saas" className="mb-12 mt-6">
               <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 opacity-80 lg:group-hover/list:opacity-100">
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/20"></div>
-                
+
                 <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-neutral-500 sm:col-span-2">
                   {t('experiences.saas.period')}
                 </header>
@@ -252,17 +246,20 @@ export default function CVSection() {
                       {t('experiences.saas.role')}
                     </span>
                   </h3>
-                  <div className='text-forest-400 text-sm mb-4'>
+                  <div className="text-forest-400 text-sm mb-4">
                     {t('experiences.saas.company')}
                   </div>
 
                   <ul className="mt-4 space-y-3">
                     {(t.raw('experiences.saas.items') as string[]).map((item, index) => (
-                      <li key={index} className="border-l-2 border-forest-700 pl-4 hover:border-forest-400 transition-colors">
-                        <p 
+                      <li
+                        key={index}
+                        className="border-l-2 border-forest-700 pl-4 hover:border-forest-400 transition-colors"
+                      >
+                        <p
                           className="text-sm leading-relaxed text-neutral-400"
                           dangerouslySetInnerHTML={{
-                            __html: renderHighlightedText(item)
+                            __html: renderHighlightedText(item),
                           }}
                         />
                       </li>
@@ -276,7 +273,7 @@ export default function CVSection() {
             <li id="cv-experience-piping" className="mb-12 mt-6">
               <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:opacity-100! lg:group-hover/list:opacity-50">
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/20"></div>
-                
+
                 <header className="z-10 mb-2 mt-1 text-xs font-semibold uppercase tracking-wide text-neutral-500 sm:col-span-2">
                   {t('experiences.piping.period')}
                 </header>
@@ -287,17 +284,20 @@ export default function CVSection() {
                       {t('experiences.piping.role')}
                     </span>
                   </h3>
-                  <div className='text-forest-400 text-sm mb-4'>
+                  <div className="text-forest-400 text-sm mb-4">
                     {t('experiences.piping.company')}
                   </div>
 
                   <ul className="mt-4 space-y-3">
                     {(t.raw('experiences.piping.items') as string[]).map((item, index) => (
-                      <li key={index} className="border-l-2 border-forest-700 pl-4 hover:border-forest-400 transition-colors">
-                        <p 
+                      <li
+                        key={index}
+                        className="border-l-2 border-forest-700 pl-4 hover:border-forest-400 transition-colors"
+                      >
+                        <p
                           className="text-sm leading-relaxed text-neutral-400"
                           dangerouslySetInnerHTML={{
-                            __html: renderHighlightedText(item)
+                            __html: renderHighlightedText(item),
                           }}
                         />
                       </li>
@@ -309,7 +309,7 @@ export default function CVSection() {
           </ol>
 
           <div className="mt-12">
-            <a 
+            <a
               href="/cv-majit-morosetti.pdf"
               target="_blank"
               rel="noopener noreferrer"
@@ -337,22 +337,22 @@ export default function CVSection() {
 
         {/* Compétences techniques */}
         <section id="cv-skills" className="mb-16 scroll-mt-16 lg:mb-16 lg:scroll-mt-24">
-              <CVSectionTitle title={t('skills.title')} />
+          <CVSectionTitle title={t('skills.title')} />
 
           <ol className="group/list">
             {/* Frontend */}
             <li className="mb-12 mt-6">
               <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:opacity-100! lg:group-hover/list:opacity-50">
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/20"></div>
-                
+
                 <header className="flex items-center z-10 mb-2 mt-1 text-md font-semibold uppercase tracking-wide text-neutral-500 sm:col-span-2">
                   {t('skills.frontend')}
                 </header>
-                
+
                 <div className="z-10 sm:col-span-6">
                   <div className="border-l-2 border-forest-700 pl-4 hover:border-forest-400 transition-colors">
                     <ul className="flex flex-wrap gap-2">
-                      {(t.raw('skills.categories.frontend') as string[]).map((skill) => (
+                      {(t.raw('skills.categories.frontend') as string[]).map(skill => (
                         <li key={skill}>
                           <div className="flex items-center rounded-full bg-forest-800/50 px-3 py-1 text-sm font-medium leading-5 text-forest-100 border border-forest-700 hover:scale-105 hover:bg-forest-400 hover:text-forest-900 transition duration-300 ease-in-out">
                             {skill}
@@ -369,15 +369,15 @@ export default function CVSection() {
             <li className="mb-12">
               <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:opacity-100! lg:group-hover/list:opacity-50">
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/20"></div>
-                
+
                 <header className="flex items-center z-10 mb-2 mt-1 text-md font-semibold uppercase tracking-wide text-neutral-500 sm:col-span-2">
                   {t('skills.backend')}
                 </header>
-                
+
                 <div className="z-10 sm:col-span-6">
                   <div className="border-l-2 border-forest-700 pl-4 hover:border-forest-400 transition-colors">
                     <ul className="flex flex-wrap gap-2">
-                      {(t.raw('skills.categories.backend') as string[]).map((skill) => (
+                      {(t.raw('skills.categories.backend') as string[]).map(skill => (
                         <li key={skill}>
                           <div className="flex items-center rounded-full bg-forest-800/50 px-3 py-1 text-sm font-medium leading-5 text-forest-100 border border-forest-700 hover:scale-105 hover:bg-forest-400 hover:text-forest-900 transition duration-300 ease-in-out">
                             {skill}
@@ -394,15 +394,15 @@ export default function CVSection() {
             <li className="mb-12">
               <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 lg:hover:opacity-100! lg:group-hover/list:opacity-50">
                 <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-lg transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-forest-800/20"></div>
-                
+
                 <header className="flex items-center z-10 mb-2 mt-1 text-md font-semibold uppercase tracking-wide text-neutral-500 sm:col-span-2">
                   {t('skills.tools')}
                 </header>
-                
+
                 <div className="z-10 sm:col-span-6">
                   <div className="border-l-2 border-forest-700 pl-4 hover:border-forest-400 transition-colors">
                     <ul className="flex flex-wrap gap-2">
-                      {(t.raw('skills.categories.tools') as string[]).map((skill) => (
+                      {(t.raw('skills.categories.tools') as string[]).map(skill => (
                         <li key={skill}>
                           <div className="flex items-center rounded-full bg-forest-800/50 px-3 py-1 text-sm font-medium leading-5 text-forest-100 border border-forest-700 hover:scale-105 hover:bg-forest-400 hover:text-forest-900 transition duration-300 ease-in-out">
                             {skill}
@@ -419,9 +419,7 @@ export default function CVSection() {
 
         {/* Formation */}
         <section id="cv-education" className="lg:pb-16 lg:scroll-mt-24">
- 
-              <CVSectionTitle title={t('education.title')} />
-
+          <CVSectionTitle title={t('education.title')} />
 
           <ol className="group/list">
             <li className="mb-12 mt-6">
@@ -451,7 +449,7 @@ export default function CVSection() {
           <CVSectionTitle title={t('additional.title')} />
           <div className="text-neutral-300 text-base">
             {(t.raw('additional.items') as string[]).map((item, index) => (
-              <div 
+              <div
                 key={index}
                 className="my-4 p-4 border border-forest-800 hover:bg-forest-800/20 hover:text-forest-100 hover:border-forest-400 hover:scale-105 rounded-lg transition-all ease-in-out"
               >
