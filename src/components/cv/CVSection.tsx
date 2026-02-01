@@ -2,12 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import CVSectionTitle from './CVSectionTitle';
 
 export default function CVSection() {
   const t = useTranslations('cv');
-  const locale = useLocale();
   const [activeSection, setActiveSection] = useState('about');
 
    useEffect(() => {
