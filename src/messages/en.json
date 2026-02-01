@@ -34,9 +34,9 @@
           "Backend <highlight>APIs developed with Node.js</highlight>, authentication, webhooks, and third-party integrations",
           "Data persistence with <highlight>PostgreSQL</highlight>, structured schemas and validations",
           "Email workflows and transactional messaging (Resend)",
-          "Payment and billing foundations with <highlight>Stripe</highlight>",
           "Deployed and operated in production (CI/CD, monitoring, iterations)",
-          "Key focus: <highlight>autonomous development, product ownership, production delivery</highlight>"
+          "Key focus: <highlight>autonomous development, product ownership, production delivery</highlight>",
+          "Gestion de la persistance des données et de la fiabilité applicative en production"
         ]
       },
       "piping": {
@@ -95,7 +95,7 @@
       "description": "Full-stack application with multi-step questionnaire, automated lead processing via webhooks and management dashboard. Email notification system and Notion synchronization.",
       "tech": ["Next.js", "TypeScript", "PostgreSQL", "Resend", "Notion API"],
       "highlights": ["Production", "JWT Auth", "Automated workflows"],
-      "github": "-",
+      "github": "https://github.com/majitmambetzhumayev/sparqup",
       "demo": "https://sparqup.fr"
     },
     "analytics": {
@@ -103,8 +103,8 @@
       "description": "Internal dashboard with real-time data visualization, lead management, Umami Analytics integration, and report exports. Admin interface with access control.",
       "tech": ["Next.js", "PostgreSQL", "Recharts", "Umami API", "TailwindCSS"],
       "highlights": ["Real-time data", "Umami integration", "CSV export"],
-      "github": "-",
-      "demo": "-"
+      "github": "https://github.com/majitmambetzhumayev/sparqup",
+      "demo": "https://sparqup.fr/login"
     },
     "api": {
       "title": "Multi-source Lead Ingestion API",
