@@ -32,11 +32,11 @@
         "items": [
           "Conception et développement d'une <highlight>plateforme SaaS</highlight> de génération et d'ingestion automatisée de leads",
           "Frontend en <highlight>Next.js (App Router), React, TypeScript, Tailwind CSS</highlight>",
-          "Développement d'<highlight>APIs backend en Node.js</highlight>, authentification et intégrations tierces",
-          "Base de données <highlight>PostgreSQL</highlight>, schémas structurés et validations",
+          "Développement d'<highlight>APIs REST avec Node.js/Express</highlight>, validation de webhooks et intégrations tierces (Make.com, Notion API)",
+          "Base de données <highlight>PostgreSQL</highlight> (Railway), schémas structurés et migrations",
           "Automatisation des emails transactionnels (Resend)",
-          "Déploiement, exploitation et itérations en production",
-          "Handled data persistence and application reliability in production environments",
+          "Couverture de tests avec <highlight>Jest</highlight> pour tests unitaires et d'intégration",
+          "Déploiement et exploitation en production avec <highlight>pipelines CI/CD</highlight> (GitHub Actions, Railway, Vercel)",
           "Focus : <highlight>autonomie, ownership produit, mise en production</highlight>"
         ]
       },
@@ -62,29 +62,22 @@
       "categories": {
         "frontend": ["React", "Next.js (App Router)", "TypeScript", "Tailwind CSS", "HTML / CSS"],
         "backend": [
-          "Node.js",
+          "Node.js / Express",
           "APIs REST",
-          "PostgreSQL",
-          "Authentification (JWT, sessions)",
-          "Webhooks & intégrations tierces"
+          "PostgreSQL (Railway)",
+          "Authentification (JWT, NextAuth)",
+          "Webhooks & intégrations tierces (Make.com, Notion API)"
         ],
-        "tools": ["Linux (WSL)", "Git / GitHub", "Docker", "Postman", "Vercel", "ESLint"]
+        "tools": [
+          "Linux (WSL)",
+          "Git / GitHub",
+          "Docker",
+          "Postman",
+          "Jest",
+          "Vercel / Railway",
+          "ESLint / Prettier"
+        ]
       }
-    },
-    "education": {
-      "title": "Formation",
-      "cpge": {
-        "period": "2014 — 2016",
-        "title": "CPGE PTSI – PT (Classes préparatoires aux grandes écoles)",
-        "description": "Formation intensive en mathématiques, physique et sciences de l'ingénieur"
-      }
-    },
-    "additional": {
-      "title": "Langues",
-      "items": ["Français : langue maternelle", "Anglais : niveau bilingue", "Russe : A2"]
-    },
-    "cta": {
-      "downloadCV": "Télécharger le CV complet"
     }
   },
   "projects": {
@@ -109,11 +102,11 @@
     },
     "api": {
       "title": "API d'ingestion de leads multi-sources",
-      "description": "API REST Node.js pour centraliser les leads de plateformes externes (Malt, Codeur.com). Normalisation des données, validation des webhooks, rate limiting et synchronisation automatique vers Notion.",
-      "tech": ["Node.js", "Express", "PostgreSQL", "Notion API", "Jest"],
-      "highlights": ["Webhooks sécurisés", "Normalisation data", "Tests unitaires"],
-      "github": "-",
-      "demo": "-"
+      "description": "API REST Node.js centralisant les leads depuis des plateformes d'automation (Make.com, Google Forms, Typeform). Normalisation intelligente des données, stockage PostgreSQL et synchronisation automatique vers Notion.",
+      "tech": ["Node.js", "Express", "TypeScript", "PostgreSQL", "Notion API"],
+      "highlights": ["Validation webhooks", "Normalisation data", "Sync Notion async"],
+      "github": "https://github.com/majitmambetzhumayev/lead-ingestion-api",
+      "demo": "https://lead-ingestion-api-production.up.railway.app/api/health"
     }
   },
   "contact": {

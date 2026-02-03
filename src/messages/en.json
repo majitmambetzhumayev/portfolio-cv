@@ -32,11 +32,11 @@
         "items": [
           "Designed and developed a full-stack <highlight>SaaS for automated lead capture</highlight> and processing",
           "Frontend built with <highlight>Next.js (App Router), React, TypeScript, Tailwind CSS</highlight>",
-          "Backend <highlight>APIs developed with Node.js</highlight>, authentication, webhooks, and third-party integrations",
-          "Data persistence with <highlight>PostgreSQL</highlight>, structured schemas and validations",
+          "Backend <highlight>REST APIs with Node.js/Express</highlight>, webhook validation, and third-party integrations (Make.com, Notion API)",
+          "Data persistence with <highlight>PostgreSQL</highlight> (Railway), structured schemas and migrations",
           "Email workflows and transactional messaging (Resend)",
-          "Deployed and operated in production (CI/CD, monitoring, iterations)",
-          "Gestion de la persistance des données et de la fiabilité applicative en production",
+          "Test coverage with <highlight>Jest</highlight> for unit and integration testing",
+          "Deployed and operated in production with <highlight>CI/CD pipelines</highlight> (GitHub Actions, Railway, Vercel)",
           "Key focus: <highlight>autonomous development, product ownership, production delivery</highlight>"
         ]
       },
@@ -62,13 +62,21 @@
       "categories": {
         "frontend": ["React", "Next.js (App Router)", "TypeScript", "Tailwind CSS", "HTML / CSS"],
         "backend": [
-          "Node.js",
+          "Node.js / Express",
           "REST APIs",
-          "PostgreSQL",
-          "Authentication (JWT, sessions)",
-          "Webhooks & third-party integrations"
+          "PostgreSQL (Railway)",
+          "Authentication (JWT, NextAuth)",
+          "Webhooks & third-party integrations (Make.com, Notion API)"
         ],
-        "tools": ["Linux (WSL)", "Git / GitHub", "Docker", "Postman", "Vercel", "ESLint"]
+        "tools": [
+          "Linux (WSL)",
+          "Git / GitHub",
+          "Docker",
+          "Postman",
+          "Jest",
+          "Vercel / Railway",
+          "ESLint / Prettier"
+        ]
       }
     },
     "education": {
@@ -109,11 +117,11 @@
     },
     "api": {
       "title": "Multi-source Lead Ingestion API",
-      "description": "Node.js REST API to centralize leads from external platforms (Malt, Codeur.com). Data normalization, webhook validation, rate limiting, and automated Notion synchronization.",
-      "tech": ["Node.js", "Express", "PostgreSQL", "Notion API", "Jest"],
-      "highlights": ["Secure webhooks", "Data normalization", "Unit tests"],
-      "github": "-",
-      "demo": "-"
+      "description": "Node.js REST API centralizing leads from automation platforms (Make.com, Google Forms, Typeform). Intelligent data normalization, PostgreSQL storage, and automated Notion synchronization.",
+      "tech": ["Node.js", "Express", "TypeScript", "PostgreSQL", "Notion API"],
+      "highlights": ["Webhook validation", "Data normalization", "Async Notion sync"],
+      "github": "https://github.com/majitmambetzhumayev/lead-ingestion-api",
+      "demo": "https://lead-ingestion-api-production.up.railway.app/api/health"
     }
   },
   "contact": {
