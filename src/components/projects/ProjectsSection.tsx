@@ -6,11 +6,11 @@ export default function ProjectsSection() {
   const t = useTranslations('projects');
 
   // fetches projects from messages
-  const projectIds = ['saas', 'analytics', 'api'] as const;
+  const projectIds = ['saas', 'management', 'api'] as const;
 
   const projectImages: Record<(typeof projectIds)[number], string | undefined> = {
     saas: '',
-    analytics: '',
+    management: '',
     api: '',
   };
 

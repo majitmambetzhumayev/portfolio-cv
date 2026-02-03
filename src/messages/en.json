@@ -107,11 +107,11 @@
       "github": "https://github.com/majitmambetzhumayev/sparqup",
       "demo": "https://sparqup.fr"
     },
-    "analytics": {
-      "title": "Analytics & Management Dashboard",
-      "description": "Internal dashboard with real-time data visualization, lead management, Umami Analytics integration, and report exports. Admin interface with access control.",
-      "tech": ["Next.js", "PostgreSQL", "Recharts", "Umami API", "TailwindCSS"],
-      "highlights": ["Real-time data", "Umami integration", "CSV export"],
+    "management": {
+      "title": "Lead Management Dashboard",
+      "description": "Internal dashboard with real-time data visualization, lead management, and Umami Analytics integration. Admin interface with access control.",
+      "tech": ["Next.js", "PostgreSQL", "Umami API", "TailwindCSS"],
+      "highlights": ["Real-time data", "Umami integration", "User management"],
       "github": "https://github.com/majitmambetzhumayev/sparqup",
       "demo": "https://sparqup.fr/login"
     },

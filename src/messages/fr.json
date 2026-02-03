@@ -78,6 +78,21 @@
           "ESLint / Prettier"
         ]
       }
+    },
+    "education": {
+      "title": "Formation",
+      "cpge": {
+        "period": "2014 — 2016",
+        "title": "CPGE PTSI – PT (Classes préparatoires aux grandes écoles)",
+        "description": "Formation intensive en mathématiques, physique et sciences de l'ingénieur"
+      }
+    },
+    "additional": {
+      "title": "Langues",
+      "items": ["Français : langue maternelle", "Anglais : niveau bilingue", "Russe : A2"]
+    },
+    "cta": {
+      "downloadCV": "Télécharger le CV complet"
     }
   },
   "projects": {
@@ -92,11 +107,11 @@
       "github": "https://github.com/majitmambetzhumayev/sparqup",
       "demo": "https://sparqup.fr"
     },
-    "analytics": {
-      "title": "Dashboard Analytics & Gestion",
-      "description": "Dashboard interne avec visualisation de données en temps réel, gestion de leads, intégration Umami Analytics et export de rapports. Interface d'administration avec contrôle d'accès.",
-      "tech": ["Next.js", "PostgreSQL", "Recharts", "Umami API", "TailwindCSS"],
-      "highlights": ["Données temps réel", "Intégration Umami", "Export CSV"],
+    "management": {
+      "title": "Dashboard Gestion de Leads",
+      "description": "Dashboard interne avec visualisation de données en temps réel, gestion de leads et intégration Umami Analytics. Interface d'administration avec contrôle d'accès.",
+      "tech": ["Next.js", "PostgreSQL", "Umami API", "TailwindCSS"],
+      "highlights": ["Données temps réel", "Intégration Umami", "Gestion utilisateur"],
       "github": "https://github.com/majitmambetzhumayev/sparqup",
       "demo": "https://sparqup.fr/login"
     },

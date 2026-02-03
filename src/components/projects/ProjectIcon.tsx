@@ -2,7 +2,7 @@
 import { Rocket, BarChart3, Server } from 'lucide-react';
 import Image from 'next/image';
 
-type ProjectId = 'saas' | 'analytics' | 'api';
+type ProjectId = 'saas' | 'management' | 'api';
 
 interface ProjectIconProps {
   projectId: ProjectId;
@@ -13,7 +13,7 @@ export default function ProjectIcon({ projectId, image }: ProjectIconProps) {
   // Maps default icons
   const defaultIcons = {
     saas: Rocket,
-    analytics: BarChart3,
+    management: BarChart3,
     api: Server,
   };
 
