@@ -352,7 +352,7 @@ export default function CVSection() {
                     <ul className="flex flex-wrap gap-2">
                       {(t.raw('skills.categories.frontend') as string[]).map(skill => (
                         <li key={skill}>
-                          <div className="flex items-center rounded-full bg-forest-800/50 px-3 py-1 text-sm font-medium leading-5 text-forest-100 border border-forest-700 hover:scale-105 hover:bg-forest-400 hover:text-forest-900 transition duration-300 ease-in-out">
+                          <div className="flex items-center rounded-xl bg-forest-800/50 px-3 py-1 text-sm font-medium leading-5 text-forest-100 border border-forest-700 hover:scale-105 hover:bg-forest-400 hover:text-forest-900 transition duration-300 ease-in-out">
                             {skill}
                           </div>
                         </li>
@@ -377,7 +377,7 @@ export default function CVSection() {
                     <ul className="flex flex-wrap gap-2">
                       {(t.raw('skills.categories.backend') as string[]).map(skill => (
                         <li key={skill}>
-                          <div className="flex items-center rounded-full bg-forest-800/50 px-3 py-1 text-sm font-medium leading-5 text-forest-100 border border-forest-700 hover:scale-105 hover:bg-forest-400 hover:text-forest-900 transition duration-300 ease-in-out">
+                          <div className="flex items-center rounded-xl bg-forest-800/50 px-3 py-1 text-sm font-medium leading-5 text-forest-100 border border-forest-700 hover:scale-105 hover:bg-forest-400 hover:text-forest-900 transition duration-300 ease-in-out">
                             {skill}
                           </div>
                         </li>
@@ -402,7 +402,7 @@ export default function CVSection() {
                     <ul className="flex flex-wrap gap-2">
                       {(t.raw('skills.categories.tools') as string[]).map(skill => (
                         <li key={skill}>
-                          <div className="flex items-center rounded-full bg-forest-800/50 px-3 py-1 text-sm font-medium leading-5 text-forest-100 border border-forest-700 hover:scale-105 hover:bg-forest-400 hover:text-forest-900 transition duration-300 ease-in-out">
+                          <div className="flex items-center rounded-xl bg-forest-800/50 px-3 py-1 text-sm font-medium leading-5 text-forest-100 border border-forest-700 hover:scale-105 hover:bg-forest-400 hover:text-forest-900 transition duration-300 ease-in-out">
                             {skill}
                           </div>
                         </li>

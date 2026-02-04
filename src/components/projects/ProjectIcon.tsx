@@ -1,8 +1,8 @@
 // components/projects/ProjectIcon.tsx
-import { Rocket, BarChart3, Server } from 'lucide-react';
+import { Rocket, BarChart3, Server, ListChecks } from 'lucide-react';
 import Image from 'next/image';
 
-type ProjectId = 'saas' | 'management' | 'api';
+type ProjectId = 'saas' | 'management' | 'api' | 'taskmanager';
 
 interface ProjectIconProps {
   projectId: ProjectId;
@@ -15,6 +15,7 @@ export default function ProjectIcon({ projectId, image }: ProjectIconProps) {
     saas: Rocket,
     management: BarChart3,
     api: Server,
+    taskmanager: ListChecks,
   };
 
   const Icon = defaultIcons[projectId];

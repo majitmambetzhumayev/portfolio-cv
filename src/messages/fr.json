@@ -63,8 +63,9 @@
         "frontend": ["React", "Next.js (App Router)", "TypeScript", "Tailwind CSS", "HTML / CSS"],
         "backend": [
           "Node.js / Express",
+          "Django / Python",
           "APIs REST",
-          "PostgreSQL (Railway)",
+          "PostgreSQL (Railway, Render)",
           "Authentification (JWT, NextAuth)",
           "Webhooks & intégrations tierces (Make.com, Notion API)"
         ],
@@ -122,6 +123,14 @@
       "highlights": ["Validation webhooks", "Normalisation data", "Sync Notion async"],
       "github": "https://github.com/majitmambetzhumayev/lead-ingestion-api",
       "demo": "https://lead-ingestion-api-production.up.railway.app/api/health"
+    },
+    "taskmanager": {
+      "title": "Django Task Manager",
+      "description": "Application full-stack de gestion de tâches avec authentification utilisateur, organisation par projets et filtrage avancé. Interface responsive mobile-first avec conteneurisation Docker et déploiement en production.",
+      "tech": ["Django 5.2", "PostgreSQL", "Docker", "Tailwind CSS"],
+      "highlights": ["Auth utilisateur", "CRUD complet", "Déployé sur Render"],
+      "github": "https://github.com/majitmambetzhumayev/django_task_manager",
+      "demo": "https://django-task-manager-yi49.onrender.com"
     }
   },
   "contact": {
